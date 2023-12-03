@@ -1,6 +1,6 @@
 ![Watch High Quality Anime Online](https://anitoon.pages.dev/logo/logo_TTI.jpg)
 ## ToonTamilIndia-Anime-Script
--   This script was folked from [AnimeDex](https://github.com/TechShreyash/AnimeDexLite)
+-   This script was forked from [AnimeDex](https://github.com/TechShreyash/AnimeDexLite)
 -   Jw player added
 -   Pure html, css and js version
 -   Lite Weight, Fast and Free
