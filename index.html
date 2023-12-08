@@ -38,4 +38,57 @@
     <meta name="apple-mobile-web-app-status-bar" content="#202125" />
     <link href="./css/index.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/45cb819601.js" crossorigin="anonymous"></script>
-</head>
+
+<body>
+    <header id="head-div">
+        <div id="title1">
+            <a href="./index.html"><img src="./logo/logo_TTI.jpg"
+                    alt="ToonTamilIndia" /></a>
+        </div>
+        <div id="search-div">
+            <form action="./search.html" method="GET">
+                <input type="text" name="query" id="query" placeholder="Search Anime..." required />
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </header>
+
+    <section>
+        <div class="slideshow-container"></div>
+    </section>
+
+    <section>
+        <div class="divox">
+            <h2 id="latest">Most Popular</h2>
+            <div id="latest2" class="popularg">MOST_POPULAR</div>
+        </div>
+    </section>
+
+    <section>
+        <div class="divox">
+            <h2 id="latest">Recent Release</h2>
+            <div id="latest2" class="recento"></div>
+        </div>
+    </section>
+    <div id="load">
+        <img src="./logo/loading2.gif" alt="Loading..." />
+    </div>
+    <hr />
+    <footer>
+         <div>
+                <a href="https://toontamilindia.blospot.com" target="_blank"
+                    >Watch Anime Online</a
+                >
+                <a href="https://t.me/toontamilindia" target="_blank"
+                    >(@toontamilindia)</a
+                >
+            </div>
+    </footer>
+    <hr />
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="/home/js/menu.js"></script>
+</body>
+
+</html>
