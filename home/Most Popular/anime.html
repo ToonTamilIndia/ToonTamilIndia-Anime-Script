@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>please wait</title>
+</head>
+
+<body>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const vidId = urlParams.get('anime');
+window.location.href = `http://www.toontamilind.in/home/anime.html?anime=${vidId}`;
+
+window.location.replace(`http://www.toontamilind.in/home/anime.html?anime=${vidId}`);
+</script>
+</body>
+
+</html>
