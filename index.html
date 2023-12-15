@@ -1,8 +1,8 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <link rel="icon" type="image/x-icon"
-        href="./logo/logo.png" />
+    <link rel="icon" type="image/x-icon" href="/logo/logo.png" />
     <title>ToonTamilIndia - Watch High Quality Anime Online</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="title" content="ToonTamilIndia - Watch High Quality Anime Online" />
@@ -24,10 +24,9 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ToonTamilIndia" />
     <meta property="og:url" content="/" />
-    <meta itemprop="image" content="./logo/logo_ss.png" />
-    <meta property="og:image" content="./logo/logo_ss.png" />
-    <meta property="og:image:secure_url"
-        content="./logo/logo_ss.png" />
+    <meta itemprop="image" content="/logo/logo_ss.png" />
+    <meta property="og:image" content="/logo/logo_ss.png" />
+    <meta property="og:image:secure_url" content="/logo/logo_ss.png" />
     <meta property="og:image:width" content="650" />
     <meta property="og:image:height" content="350" />
     <meta property="twitter:title" content="ToonTamilIndia - Watch High Quality Anime Online" />
@@ -36,26 +35,108 @@
     <meta property="twitter:url" content="" />
     <meta property="twitter:card" content="summary" />
     <meta name="apple-mobile-web-app-status-bar" content="#202125" />
-    <link href="./css/index.css" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/45cb819601.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/dist/output.css">
+    <link rel="stylesheet" href="/src/app.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="/css/index.css" rel="stylesheet" />
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- FONT AWESOME ICON -->
+    <script src="https://kit.fontawesome.com/2fb83d89d2.js" crossorigin="anonymous"></script>
 
-<body>
-    <header id="head-div">
-        <div id="title1">
-            <a href="./index.html"><img src="./logo/logo_TTI.jpg"
-                    alt="ToonTamilIndia" /></a>
-        </div>
-        <div id="search-div">
-            <form action="./search.html" method="GET">
-                <input type="text" name="query" id="query" placeholder="Search Anime..." required />
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-    </header>
 
-    <section>
-        <div class="slideshow-container"></div>
+    <title>ToonTamilIndia - Watch High Quality Anime Online</title>
+</head>
+
+<body class="bg-bgColor1 px-3">
+
+    <nav class=" container mx-auto text-white p-6 md:pt-20 ">
+
+        <ul class=" space-x-6 font-bold hidden md:flex">
+            <li class="hover:text-boor"><a href=".">Home</a></li>
+            <li class="hover:text-boor"><a href="/Most Popular">Most Popular</a></li>
+            <li class="hover:text-boor"><a href="/Recent Release">TV series</a></li>
+
+        </ul>
+        <span id="burger" class="  md:hidden flex items-center space-x-2"><i class='bx bx-menu text-3xl font-bold'></i> Menue </span>
+    </nav>
+
+
+    <!-- hero-section -->
+    <section id="hero" class="pt-8">
+        <!-- flex containainer -->
+        <div class="flex container flex-col mx-auto md:flex-row">
+
+
+            <div class="left flex items-center justify-start md:w-1/2 flex-col space-y-6 ">
+                <img class="mx-auto w-[200px]" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEih6RA7TbLUeKTDfQeoHF8z2-taWZ7ToOuVcPyCoXIPcznID14xeQuWJXksEOG_AlALUhAXWGzcrMik08s_V1DXBRmb5bpEUs0aO3nkfEKE2lkmuWi-Jo4vLyPI1mVDqQODsx34RD4TVXOMFtQDQen33qwLRnCMqHdOiAYC4tNBKv_fQN4XmY16DiWd/s922/Screenshot_2022-12-04-09-19-50-463-edit_com.camerasideas.trimmer.jpg" alt="ToonTamilIndia">
+
+                <form class="w-full flex space-x-2" action="/search.html" method="GET">
+                    <input class="outline-none rounded-full py-3 px-7 w-full" type="search" name="query" id="search" placeholder="Search anime..">
+                    <button class="bg-boor rounded-full px-4 text-center flex items-center justify-center" type="submit"><i class='bx bx-search-alt'></i></button>
+                </form>
+
+                <div id="top">
+                    <p class="text-white font-bold">Disclaimer :</p>
+                    <p class="text-gray-400">
+                        This script credit animedex lite and we does not host any video
+                    </p>
+                    <p class="text-white font-bold">Top searches :</p>
+                    <p <a href="/search.html?query=Jujutsu%20Kaisen%202nd%20Season" class="text-gray-400">Jujutsu
+                        Kaisen 2nd Season</a>
+
+                        <a href="/search.html?query=One%20Piece" class="text-gray-400">One Piece</a>
+
+                        <a href="/search.html?query=Jujutsu%20Kaisen%20(TV)" class="text-gray-400">Jujutsu Kaisen
+                            (TV)</a>
+
+                        <a href="/search.html?query=The%20Eminence%20in%20Shadow%20Season%202"
+                            class="text-gray-400">The Eminence in Shadow
+                            Season 2</a>
+
+                        <a href="/search.html?query=Overflow%20(Uncensored)" class="text-gray-400">Overflow
+                            (Uncensored)</a>
+
+                        <a href="/search.html?query=Naruto%3A%20Shippuden" class="text-gray-400">Naruto:
+                            Shippuden</a>
+
+                        <a href="/search.html?query=Attack%20on%20Titan" class="text-gray-400">Attack on Titan</a>
+
+                        <a href="/search.html?query=Jujutsu%20Kaisen%3A%20Specials" class="text-gray-400">Jujutsu
+                            Kaisen: Specials</a>
+
+                        <a href="/search.html?query=Boruto%3A%20Naruto%20Next%20Generations"
+                            class="text-gray-400">Boruto: Naruto Next
+                            Generations</a>
+
+                        <a href="/search.html?query=Dr.%20Stone%203rd%20Season%20Part%202"
+                            class="text-gray-400">Dr. Stone 3rd Season Part
+                            2</a>
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="right md:w-1/2 hidden md:block">
+                <img src="https://aniwatch.to/images/anw-min.webp" alt="anime">
+            </div>
+
+
+        </div>
     </section>
+
+    <div
+        class="bottom container mx-auto w-full  items-center justify-center bg-boor p-6 rounded-bl-xl rounded-br-xl font-bold hidden md:flex">
+        <a href="#!">View site <i class='bx bxs-right-arrow-circle'></i></a>
+    </div>
+
+
 
     <section>
         <div class="divox">
@@ -70,24 +151,26 @@
             <div id="latest2" class="recento"></div>
         </div>
     </section>
-    <div id="load">
-        <img src="./logo/loading2.gif" alt="Loading..." />
-    </div>
     <hr />
+    <div id="load">
+        <img src="/logo/loading2.gif" alt="Loading..." />
+    </div>
     <footer>
-         <div>
-                <a href="https://toontamilindia.blospot.com" target="_blank"
-                    >Watch Anime Online</a
-                >
-                <a href="https://t.me/toontamilindia" target="_blank"
-                    >(@toontamilindia)</a
-                >
-            </div>
+        <div>
+            <a href="https://toontamilindia.in" target="_blank">Watch Anime Online</a>
+            <a href="https://t.me/toontamilindia" target="_blank">(@toontamilindia)</a>
+        </div>
     </footer>
     <hr />
 
+
+
+
+
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/src/app.js"></script>
 </body>
 
 </html>
