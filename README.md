@@ -2,12 +2,15 @@
 ## ToonTamilIndia-Anime-Script
 -   This script was forked from [AnimeDex](https://github.com/TechShreyash/AnimeDexLite)
 -   Jw player added
+-   Art Player added
 -   Pure html, css and js version
+-   **I don't know any language except c++(basic)**
 -   Lite Weight, Fast and Free
 -   Easy to deploy
 -   Powered By Blazing Fast [AnimeDexApi](https://api.anime-dex.workers.dev)
 ## Demo
 -   https://anitoon.pages.dev
+-   http://toontamilind.in (similar but different)
  ## Host Your Own (Free Hostings)
 
 -   Cloudflare, Netlify, Github Pages, Vercel, Render
