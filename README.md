@@ -10,7 +10,7 @@
 -   Powered By Blazing Fast [AnimeDexApi](https://api.anime-dex.workers.dev)
 ## Demo
 -   https://anitoon.pages.dev
--   http://toontamilind.in (similar but different)
+-   ~~http://toontamilind.in~~ (similar but different)
  ## Host Your Own (Free Hostings)
 
 -   Cloudflare, Netlify, Github Pages, Vercel, Render
