@@ -132,7 +132,7 @@ function loadAnimes() {
             isLoading = 1;
             getMovies(page).then((data) => {
                 RefreshLazyLoader();
-                console.log(anime movies loaded");
+                console.log("anime movies loaded");
             });
             page += 1;
             isLoading = 0;
