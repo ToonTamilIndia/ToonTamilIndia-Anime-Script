@@ -39,7 +39,7 @@ function shuffle(array) {
 }
 
 
-async function getrecent(page = 1) {
+async function getpopular(page = 1) {
     const data = (await getJson(popularapi + page))["results"];
     let POPULAR_HTML = "";
 
@@ -131,7 +131,7 @@ function loadAnimes() {
     try {
         if (isLoading == 0) {
             isLoading = 1;
-            getrecent(page).then((data) => {
+            getpopular(page).then((data) => {
                 RefreshLazyLoader();
                 console.log("animes loaded");
             });
@@ -159,7 +159,7 @@ window.addEventListener("scroll", () => {
 
 // Running functions
 
-getrecent().then((data) => {
+getpopular().then((data) => {
     RefreshLazyLoader();
     console.log("animes loaded");
 });
