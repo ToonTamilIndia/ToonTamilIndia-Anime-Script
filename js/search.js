@@ -58,7 +58,7 @@ async function SearchAnime(query, page = 1) {
             anime["id"]
         }"><div class="poster la-anime"> <div id="shadow1" class="shadow"> <div class="dubb">${anime[
             "subOrDub"
-        ].toUpperCase()}</div></div><div id="shadow2" class="shadow"> <img class="lzy_img" src="https://cdn.jsdelivr.net/gh/TechShreyash/AnimeDex@main/static/img/loading.gif" data-src="${
+        ].toUpperCase()}</div></div><div id="shadow2" class="shadow"> <img class="lzy_img" src="/logo/loading.gif" data-src="${
             anime["img"]
         }"> </div><div class="la-details"> <h3>${sentenceCase(
             anime["title"]
