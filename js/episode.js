@@ -160,7 +160,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
 if (urlParams.get("anime") == null || urlParams.get("episode") == null) {
-    window.location = "./index.html";
+    window.location = "../index.html";
 }
 
 // Running functions
