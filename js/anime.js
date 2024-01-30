@@ -1,7 +1,7 @@
 
 const infoapi = "https://api.toontamilind.in/anime/gogoanime/info/";
-const epapi = "https://api.techzbots1.workers.dev/gogo/episodes/";
-const searchapi = "https://api.toontamilind.in//meta/anilist/";
+const epapi = "https://api.anime-dex.workers.dev/episode/";
+const searchapi = "https://api.toontamilind.in/meta/anilist/";
 const anilistinfoapi = "https://api.toontamilind.in/meta/anilist/info/";
 const gogosearchapi = "https://api.toontamilind.in/anime/gogoanime/";
 
