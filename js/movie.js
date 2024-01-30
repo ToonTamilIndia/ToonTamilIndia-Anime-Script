@@ -47,11 +47,11 @@ async function getMovies(page = 1) {
         let anime = data[pos];
         let title = anime["title"];
         let id = anime["id"];
-        let url = "/anime.html?anime=" + id;
+        let url = "../anime.html?anime=" + id;
         let image = anime["image"];
         let ep = anime["episodeNumber"];
 
-        RECENT_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb">SUB</div><div class="dubb dubb2">Movie</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="/logo/loading.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
+        RECENT_HTML += `<a href="${url}"><div class="poster la-anime"> <div id="shadow1" class="shadow"><div class="dubb">SUB</div><div class="dubb dubb2">Movie</div> </div><div id="shadow2" class="shadow"> <img class="lzy_img" src="../logo/loading.gif" data-src="${image}"> </div><div class="la-details"> <h3>${title}</h3></div></div></a>`;
     }
 
     document.querySelector(".mov").innerHTML += RECENT_HTML;
