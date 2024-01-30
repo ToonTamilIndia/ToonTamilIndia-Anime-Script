@@ -1,16 +1,32 @@
 // Api urls
 
-const animeapi = "https://api.anime-dex.workers.dev/anime/";
-const recommendationsapi = "https://api.anime-dex.workers.dev/recommendations/";
+const animeapi = "/anime/";
+const recommendationsapi = "/recommendations/";
+
+// Api Server Manager
+
+const AvailableServers = ['https://api1.anime-dex.workers.dev', 'https://api2.anime-dex.workers.dev', 'https://api3.anime-dex.workers.dev']
+
+function getApiServer() {
+    return AvailableServers[Math.floor(Math.random() * AvailableServers.length)]
+}
 
 // Usefull functions
 
-async function getJson(url) {
+async function getJson(url, errCount = 0) {
+    const ApiServer = getApiServer();
+    url = ApiServer + url;
+
+    if (errCount > 2) {
+        throw `Too many errors while fetching ${url}`;
+    }
+
     try {
         const response = await fetch(url);
         return await response.json();
     } catch (errors) {
         console.error(errors);
+        return getJson(url, errCount + 1);
     }
 }
 
@@ -87,7 +103,7 @@ async function loadAnimeFromGogo(data) {
         data["episodes"][0][1].split("-episode-")[0] +
         "&episode=" +
         data["episodes"][0][0];
-    const anime_title = data["title"];
+    const anime_title = data["name"];
 
     console.log("Anime Info loaded");
     RefreshLazyLoader();
@@ -130,7 +146,7 @@ async function loadAnimeFromAnilist(data) {
     for (i = 0; i < recommendations.length; i++) {
         let anime = recommendations[i];
         let title = anime["title"]["userPreferred"];
-        rechtml += `<a href="./anime.html?anime=${title}"><div class="poster la-anime"> <div id="shadow1" class="shadow"> <div class="dubb">${anime["meanScore"]} / 100</div><div class="dubb dubb2">${anime["format"]}</div></div><div id="shadow2" class="shadow"> <img class="lzy_img" src="../logo/loading.gif" data-src="${anime["coverImage"]["large"]}"> </div><div class="la-details"> <h3>${title}</h3> <div id="extra"> <span>${anime["status"]}</span> <span class="dot"></span> <span>EP ${anime["episodes"]}</span> </div></div></div></a>`;
+        rechtml += `<a href="./anime.html?anime=${title}"><div class="poster la-anime"> <div id="shadow1" class="shadow"> <div class="dubb">${anime["meanScore"]} / 100</div><div class="dubb dubb2">${anime["format"]}</div></div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./static/loading1.gif" data-src="${anime["coverImage"]["large"]}"> </div><div class="la-details"> <h3>${title}</h3> <div id="extra"> <span>${anime["status"]}</span> <span class="dot"></span> <span>EP ${anime["episodes"]}</span> </div></div></div></a>`;
     }
     document.getElementById("latest2").innerHTML = rechtml;
 
@@ -154,6 +170,9 @@ async function getEpList(anime_id, total) {
 
 // Function to get anime recommendations
 async function getRecommendations(anime_title) {
+    document.getElementsByClassName("sload")[0].style.display = 'block';
+
+    anime_title = anime_title.replaceAll(" ", "+");
     const data = await getJson(recommendationsapi + anime_title);
     const recommendations = data["results"];
     let rechtml = "";
@@ -161,25 +180,37 @@ async function getRecommendations(anime_title) {
     for (i = 0; i < recommendations.length; i++) {
         let anime = recommendations[i];
         let title = anime["title"]["userPreferred"];
-        rechtml += `<a href="./anime.html?anime=${title}"><div class="poster la-anime"> <div id="shadow1" class="shadow"> <div class="dubb">${anime["meanScore"]} / 100</div><div class="dubb dubb2">${anime["format"]}</div></div><div id="shadow2" class="shadow"> <img class="lzy_img" src="../logo/loading.gif" data-src="${anime["coverImage"]["large"]}"> </div><div class="la-details"> <h3>${title}</h3> <div id="extra"> <span>${anime["status"]}</span> <span class="dot"></span> <span>EP ${anime["episodes"]}</span> </div></div></div></a>`;
+        rechtml += `<a href="./anime.html?anime=${title}"><div class="poster la-anime"> <div id="shadow1" class="shadow"> <div class="dubb">${anime["meanScore"]} / 100</div><div class="dubb dubb2">${anime["format"]}</div></div><div id="shadow2" class="shadow"> <img class="lzy_img" src="./static/loading1.gif" data-src="${anime["coverImage"]["large"]}"> </div><div class="la-details"> <h3>${title}</h3> <div id="extra"> <span>${anime["status"]}</span> <span class="dot"></span> <span>EP ${anime["episodes"]}</span> </div></div></div></a>`;
     }
     document.getElementById("latest2").innerHTML = rechtml;
+    document.getElementsByClassName("sload")[0].style.display = 'none';
 }
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
 if (urlParams.get("anime") == null) {
-    window.location = "../index.html";
+    window.location = "./index.html";
 }
 
 //Running functions
-getJson(animeapi + urlParams.get("anime")).then((data) => {
-    data = data["results"];
 
-    if (data.source == "gogoanime") {
-        loadAnimeFromGogo(data);
-    } else if (data.source == "anilist") {
-        loadAnimeFromAnilist(data);
+async function loadData() {
+    try {
+        let data = await getJson(animeapi + urlParams.get("anime"));
+        data = data["results"];
+
+        if (data.source == "gogoanime") {
+            loadAnimeFromGogo(data);
+        } else if (data.source == "anilist") {
+            loadAnimeFromAnilist(data);
+        }
+    } catch (err) {
+        document.getElementById("error-page").style.display = "block";
+        document.getElementById("load").style.display = "none";
+        document.getElementById("error-desc").innerHTML = err;
+        console.error(err);
     }
-});
+}
+
+loadData();
