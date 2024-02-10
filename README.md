@@ -7,7 +7,6 @@
 -   **I don't know any language except c++(basic)**
 -   Lite Weight, Fast and Free
 -   Easy to deploy
--   Powered By Blazing Fast [AnimeDexApi](https://api.anime-dex.workers.dev)
 ## Demo
 -   https://anitoon.pages.dev
 -   ~~http://toontamilind.in~~ (similar but different)
