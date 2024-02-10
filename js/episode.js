@@ -1,6 +1,6 @@
-const animeapi = "https://api.anime-dex.workers.dev/anime/";
-const episodeapi = "https://api.anime-dex.workers.dev/episode/";
-const dlapi = "https://api.anime-dex.workers.dev/download/";
+const animeapi = "https://api1.toontamilindia.workers.dev/anime/";
+const episodeapi = "https://api2.toontamilindia.workers.dev/episode/";
+const dlapi = "https://api3.toontamilindia.workers.dev/download/";
 
 // Usefull functions
 
