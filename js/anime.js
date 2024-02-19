@@ -157,6 +157,21 @@ async function loadAnimeFromAnilist(data) {
     console.log("Anime Recommendations loaded");
 }
 
+await getEpSlider(data["episodes"])
+async function getEpSlider(total) {
+    let ephtml = "";
+
+    for (let i = 0; i < total.length; i++) {
+        let episodeId = total[i][1]
+        let epNum = total[i][0]
+        ephtml += `<div class=ep-slide><img class="lzy_img" src="./static/loading1.gif" data-src=https://thumb.anime-dex.workers.dev/thumb/${episodeId}><div class=ep-title><span>Episode ${epNum}</span></div></div>`;
+    }
+    document.getElementById("ep-slider").innerHTML = ephtml;
+    document.getElementById("slider-main").style.display = "block";
+    RefreshLazyLoader();
+    console.log("Episode Slider loaded");
+}
+
 // Function to get episode list
 async function getEpList(anime_id, total) {
     let ephtml = "";
