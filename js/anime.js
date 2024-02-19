@@ -1,5 +1,6 @@
 // Api urls
 
+
 const animeapi = "/anime/";
 const recommendationsapi = "/recommendations/";
 
@@ -104,8 +105,9 @@ async function loadAnimeFromGogo(data) {
         "&episode=" +
         data["episodes"][0][0];
     const anime_title = data["name"];
-
-    console.log("Anime Info loaded");
+    const getEpSlider = data["episodes"];
+    
+     console.log("Anime Info loaded");
     RefreshLazyLoader();
 
     getEpList(data["id"], data["episodes"]).then((data) => {
@@ -157,7 +159,6 @@ async function loadAnimeFromAnilist(data) {
     console.log("Anime Recommendations loaded");
 }
 
-await getEpSlider(data["episodes"])
 async function getEpSlider(total) {
     let ephtml = "";
 
