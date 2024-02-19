@@ -1,6 +1,6 @@
 // Api urls
 
-const ProxyApi = "https://proxy.toontamilindia.workers.dev/"
+const ProxyApi = "https://proxy.toontamilindia.workers.dev/?u="
 const animeapi = "/anime/";
 const recommendationsapi = "/recommendations/";
 
