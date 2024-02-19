@@ -1,12 +1,12 @@
 // Api urls
 
-const ProxyApi = "https://proxy.techzbots1.workers.dev/?u="
+const ProxyApi = "https://proxy.toontamilindia.workers.dev/"
 const animeapi = "/anime/";
 const recommendationsapi = "/recommendations/";
 
 // Api Server Manager
 
-const AvailableServers = ['https://api1.toontamilindia.workers.dev', 'https://api2.toontamilindia.dev', 'https://api3.toontamilindia.dev']
+const AvailableServers = ['https://api1.toontamilindia.workers.dev', 'https://api2.toontamilindia.workers.dev', 'https://api3.toontamilindia.workers.dev']
 
 function getApiServer() {
     return AvailableServers[Math.floor(Math.random() * AvailableServers.length)]
