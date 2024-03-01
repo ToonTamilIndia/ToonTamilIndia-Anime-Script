@@ -107,7 +107,7 @@ async function loadServers(servers, success = true) {
 // Function to select server
 function selectServer(btn, sandbox = false) {
     const buttons = document.getElementsByClassName("sobtn");
-    const iframe = document.getElementById("AnimeDexFrame");
+    const iframe = document.getElementById("AnimeFrame");
 
     if (sandbox == true) {
         iframe.sandbox = "allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation";
@@ -393,7 +393,7 @@ async function loadData() {
         document.getElementById("error-desc").innerHTML = err;
         console.error(err);
     }
-    document.getElementById('AnimeDexFrame').focus()
+    document.getElementById('AnimeFrame').focus()
 }
 
 loadData();
