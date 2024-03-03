@@ -1,12 +1,12 @@
 // Api urls
 
 const ProxyApi = "https://proxy.toontamilindia.workers.dev/?u="
-const animeapi = "/anime/";
-const recommendationsapi = "/recommendations/";
+const animeapi = "/anime/gogoanime/info/";
+const recommendationsapi = "/meta/anilist/";
 
 // Api Server Manager
 
-const AvailableServers = ['https://api1.toontamilindia.workers.dev', 'https://api2.toontamilindia.workers.dev', 'https://api3.toontamilindia.workers.dev']
+const AvailableServers = ['https://api.toontamilind.in']
 
 function getApiServer() {
     return AvailableServers[Math.floor(Math.random() * AvailableServers.length)]
@@ -62,7 +62,7 @@ async function RefreshLazyLoader() {
 }
 
 function getAnilistTitle(title) {
-    if (title["userPreferred"] != null) {
+    if (title["title"] != null) {
         return title["userPreferred"];
     } else if (title["english"] != null) {
         return title["english"];
@@ -76,7 +76,7 @@ function getAnilistTitle(title) {
 }
 
 function getAnilistOtherTitle(title, current) {
-    if (title["userPreferred"] != null && title["userPreferred"] != current) {
+    if (title["title"] != null && title["title"] != current) {
         return title["userPreferred"];
     } else if (title["english"] != null && title["english"] != current) {
         return title["english"];
@@ -92,14 +92,14 @@ function getAnilistOtherTitle(title, current) {
 // Function to get anime info from gogo id
 async function loadAnimeFromGogo(data) {
     document.documentElement.innerHTML = document.documentElement.innerHTML
-        .replaceAll("TITLE", data["name"])
+        .replaceAll("TITLE", data["title"])
         .replaceAll("IMG", data["image"])
-        .replaceAll("LANG", "EP " + data["episodes"].length)
+        .replaceAll("LANG", "EP " + data["totalEpisodes"].length)
         .replaceAll("TYPE", data["type"])
         .replaceAll("URL", window.location)
-        .replaceAll("SYNOPSIS", data["plot_summary"])
+        .replaceAll("SYNOPSIS", data["description"])
         .replaceAll("OTHER", data["other_name"])
-        .replaceAll("TOTAL", data["episodes"].length)
+        .replaceAll("TOTAL", data["totalEpisodes"].length)
         .replaceAll("YEAR", data["released"])
         .replaceAll("STATUS", data["status"])
         .replaceAll("GENERES", getGenreHtml(data["genre"].split(",")));
@@ -108,9 +108,9 @@ async function loadAnimeFromGogo(data) {
     document.getElementById("load").style.display = "none";
     document.getElementById("watch-btn").href =
         "./episode.html?anime=" +
-        data["episodes"][0][1].split("-episode-")[0] +
+        data["id"][0][1].split("-episode-")[0] +
         "&episode=" +
-        data["episodes"][0][0];
+        data["id"][0][0];
     const anime_title = data["name"];
 
     console.log("Anime Info loaded");
@@ -127,7 +127,7 @@ async function loadAnimeFromAnilist(data) {
 
     document.documentElement.innerHTML = document.documentElement.innerHTML
         .replaceAll("TITLE", title)
-        .replaceAll("IMG", data["coverImage"]["large"])
+        .replaceAll("IMG", data["image"])
         .replaceAll("LANG", "EP " + data["episodes"])
         .replaceAll("TYPE", data["format"])
         .replaceAll("URL", window.location)
