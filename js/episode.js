@@ -248,18 +248,18 @@ async function getEpSlider(total, current) {
         let x = episodeId.split("-episode-");
         if (epNum == current) {
             if (isShortNumber(epNum)) {
-                ephtml += `<div class="ep-slide ep-slider-playing"><a href="./episode.html?anime=${x[0]}&episode=${x[1]}"><img onerror="retryImageLoad(this)" class="lzy_img" src="./logo/loading.gif" data-src=https://thumb.anime-dex.workers.dev/thumb/${episodeId}><div class=ep-title><span>Episode ${epNum} - Playing</span></div></a></div>`;
+                ephtml += `<div class="ep-slide ep-slider-playing"><a href="./episode.html?anime=${x[0]}&episode=${x[1]}"><img onerror="retryImageLoad(this)" class="lzy_img" src="./logo/loading.gif" data-src=http://toontamilindia.pythonanywhere.com/${episodeId}><div class=ep-title><span>Episode ${epNum} - Playing</span></div></a></div>`;
             }
             else {
-                ephtml += `<div class="ep-slide ep-slider-playing"><a href="./episode.html?anime=${x[0]}&episode=${x[1]}"><img onerror="retryImageLoad(this)" class="lzy_img" src="./logo/loading.gif" data-src=https://thumb.anime-dex.workers.dev/thumb/${episodeId}><div class=ep-title><span>Ep ${epNum} - Playing</span></div></a></div>`;
+                ephtml += `<div class="ep-slide ep-slider-playing"><a href="./episode.html?anime=${x[0]}&episode=${x[1]}"><img onerror="retryImageLoad(this)" class="lzy_img" src="./logo/loading.gif" data-src=http://toontamilindia.pythonanywhere.com/${episodeId}><div class=ep-title><span>Ep ${epNum} - Playing</span></div></a></div>`;
             }
         }
         else {
             if (isShortNumber(epNum)) {
-                ephtml += `<div class=ep-slide><a href="./episode.html?anime=${x[0]}&episode=${x[1]}"><img onerror="retryImageLoad(this)" class="lzy_img" src="./logo/loading.gif" data-src=https://thumb.anime-dex.workers.dev/thumb/${episodeId}><div class=ep-title><span>Episode ${epNum}</span></div></a></div>`;
+                ephtml += `<div class=ep-slide><a href="./episode.html?anime=${x[0]}&episode=${x[1]}"><img onerror="retryImageLoad(this)" class="lzy_img" src="./logo/loading.gif" data-src=http://toontamilindia.pythonanywhere.com/${episodeId}><div class=ep-title><span>Episode ${epNum}</span></div></a></div>`;
             }
             else {
-                ephtml += `<div class=ep-slide><a href="./episode.html?anime=${x[0]}&episode=${x[1]}"><img onerror="retryImageLoad(this)" class="lzy_img" src="./static/loading1.gif" data-src=https://thumb.anime-dex.workers.dev/thumb/${episodeId}><div class=ep-title><span>Ep ${epNum}</span></div></a></div>`;
+                ephtml += `<div class=ep-slide><a href="./episode.html?anime=${x[0]}&episode=${x[1]}"><img onerror="retryImageLoad(this)" class="lzy_img" src="./static/loading1.gif" data-src=http://toontamilindia.pythonanywhere.com/${episodeId}><div class=ep-title><span>Ep ${epNum}</span></div></a></div>`;
             }
         }
     }
