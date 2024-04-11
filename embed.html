@@ -2211,36 +2211,7 @@ Icone de Share.
 
 
     
-        var playerContainer = playerInstance.getContainer();
-        var buttonContainer = playerContainer.querySelector(".jw-button-container");
-        var  spacer = buttonContainer.querySelector(".jw-spacer");
-        var timeSlider = playerContainer.querySelector(".jw-slider-time");
-        buttonContainer.replaceChild(timeSlider, spacer);
-
-        // Forward 10 seconds
-
-        );
-        var forwardContainer = rewindContainer.cloneNode(true);
-    
-        var forwardDisplayButton = forwardContainer.querySelector(
-            ".jw-icon-rewind"
-        );
-        forwardDisplayButton.style.transform = "scaleX(-1)";
-        forwardDisplayButton.ariaLabel = "Forward 10 Seconds";
-        
-      
-        forwardControlBarButton.style.transform = "scaleX(-1)";
-        forwardControlBarButton.ariaLabel = "Forward 10 Seconds";
-        rewindControlBarButton.parentNode.insertBefore(
-            forwardControlBarButton,
-    
-        );
-
-        // add onclick handlers
-        [forwardDisplayButton, forwardControlBarButton].forEach((button) => {
-            button.onclick = () => {
-                playerInstance.seek(playerInstance.getPosition() + 10);
-            };
+  
     // Add more event handlers as needed
 
 
