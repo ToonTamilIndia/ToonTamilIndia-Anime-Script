@@ -390,7 +390,7 @@ async function loadEpisodeData(data) {
             throw "Failed To Load Ad Free Servers";
         }
         // Fetch skip intervals from AniSkip API
-        const skipIntervals = await getJson(`${AniSkip}${urlParams.get("anime")}-episode-${urlParams.get("episode")}`);
+        const skipIntervals = await getJson(`http://127.0.0.1:5000/${urlParams.get("anime")}-episode-${urlParams.get("episode")}`);
             loadVideo(name, stream, skipIntervals).then(() => {
             console.log("Video loaded");
             loadServers(servers, true).then(() => {
