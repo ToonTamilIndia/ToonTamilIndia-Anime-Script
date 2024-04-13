@@ -55,24 +55,28 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// Function to get m3u8 url of episode
-async function loadVideo(name, stream) {
-    const episodeid =
-        urlParams.get("anime") + "-episode-" + urlParams.get("episode");
 
+
+// Function to get m3u8 url of episode with skip information
+async function loadVideo(name, stream, episodeId) {
     try {
         document.getElementById("ep-name").innerHTML = name;
         const serversbtn = document.getElementById("serversbtn");
 
-         let  url = stream["sources"][0]["file"];
-        serversbtn.innerHTML += `<div class="sitem"> <a class="sobtn sactive" onclick="selectServer(this)" data-value="./embed.html?url=${url}&id=${episodeid}">Player 1</a> </div>`;
+        // Fetch skip info from external API
+        const skipInfoUrl = `http://127.0.0.1:5000/${episodeId}`;
+        const skipInfoResponse = await fetch(skipInfoUrl);
+        const skipInfoData = await skipInfoResponse.json();
+
+        let url = stream["sources"][0]["file"];
+        serversbtn.innerHTML += `<div class="sitem"> <a class="sobtn sactive" onclick="selectServer(this)" data-value="./embed.html?url=<span class="math-inline">\{url\}&id\=</span>{episodeId}&opstart=<span class="math-inline">\{skipInfoData\[0\]\.interval\.startTime\}&opstop\=</span>{skipInfoData[0].interval.endTime}&edstart=<span class="math-inline">\{skipInfoData\[1\]\.interval\.startTime\}&edstop\=</span>{skipInfoData[1].interval.endTime}">Player 1</a> </div>`;
         document.getElementsByClassName("sactive")[0].click();
 
         url = stream["sources_bk"][0]["file"];
-        serversbtn.innerHTML += `<div class="sitem"> <a class="sobtn" onclick="selectServer(this)" data-value="./embed.html?url=${url}&id=${episodeid}">Player 2</a> </div>`;
-       
-         url = stream["sources"][0]["file"];
-        serversbtn.innerHTML += `<div class="sitem"> <a class="sobtn sactive" onclick="selectServer(this)" data-value="./artplayer.html?url=${url}&id=${episodeid}">Art Player</a> </div>`;
+        serversbtn.innerHTML += `<div class="sitem"> <a class="sobtn" onclick="selectServer(this)" data-value="./embed.html?url=<span class="math-inline">\{url\}&id\=</span>{episodeId}&opstart=<span class="math-inline">\{skipInfoData\[0\]\.interval\.startTime\}&opstop\=</span>{skipInfoData[0].interval.endTime}&edstart=<span class="math-inline">\{skipInfoData\[1\]\.interval\.startTime\}&edstop\=</span>{skipInfoData[1].interval.endTime}">Player 2</a> </div>`;
+
+        url = stream["sources"][0]["file"];
+        serversbtn.innerHTML += `<div class="sitem"> <a class="sobtn sactive" onclick="selectServer(this)" data-value="./artplayer.html?url=<span class="math-inline">\{url\}&id\=</span>{episodeId}&opstart=<span class="math-inline">\{skipInfoData\[0\]\.interval\.startTime\}&opstop\=</span>{skipInfoData[0].interval.endTime}&edstart=<span class="math-inline">\{skipInfoData\[1\]\.interval\.startTime\}&edstop\=</span>{skipInfoData[1].interval.endTime}">Art Player</a> </div>`;
         document.getElementsByClassName("sactive")[0].click();
 
         return true;
@@ -80,7 +84,6 @@ async function loadVideo(name, stream) {
         return false;
     }
 }
-
 // Function to available servers
 async function loadServers(servers, success = true) {
     const serversbtn = document.getElementById("serversbtn");
