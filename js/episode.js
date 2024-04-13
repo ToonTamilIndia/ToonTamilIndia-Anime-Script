@@ -391,7 +391,7 @@ async function loadEpisodeData(data) {
         }
         // Fetch skip intervals from AniSkip API
         const skipIntervals = await getJson(`${AniSkip}${urlParams.get("anime")}-episode-${urlParams.get("episode")}`);
-        loadVideo(name, stream, skipIntervals).then(() => {
+            loadVideo(name, stream, skipIntervals).then(() => {
             console.log("Video loaded");
             loadServers(servers, true).then(() => {
                 console.log("Servers loaded");
