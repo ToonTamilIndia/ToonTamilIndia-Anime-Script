@@ -1,5 +1,4 @@
-// Api urls
-
+const AniSkip = "http://127.0.0.1:5000/";
 const ProxyApi = "https://proxy.toontamilindia.workers.dev/?u=";
 const animeapi = "/anime/";
 const episodeapi = "/episode/";
@@ -55,24 +54,56 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// Function to get m3u8 url of episode
-async function loadVideo(name, stream) {
-    const episodeid =
-        urlParams.get("anime") + "-episode-" + urlParams.get("episode");
+// Function to get m3u8 url of episode with skip intervals
+async function loadEpisodeData(data, skipIntervals) {
+    data = data["results"];
+    const name = data["name"];
+    const episodes = data["episodes"];
+    const stream = data["stream"];
+    const servers = data["servers"];
+
+    document.documentElement.innerHTML =
+        document.documentElement.innerHTML.replaceAll("{{ title }}", name);
+
+    try {
+        if (stream == null) {
+            throw "Failed To Load Ad Free Servers";
+        }
+        
+        loadVideo(name, stream, skipIntervals).then(() => {
+            console.log("Video loaded");
+            loadServers(servers, true).then(() => {
+                console.log("Servers loaded");
+            });
+        });
+    } catch (err) {
+        loadServers(servers, false).then(() => {
+            console.log("Servers loaded");
+        });
+    }
+}
+
+async function loadVideo(name, stream, skipIntervals) {
+    // Adjust URLs for Player 1, Player 2, and Art Player using skip intervals
+    const episodeid = urlParams.get("anime") + "-episode-" + urlParams.get("episode");
+    const opStart = skipIntervals.results[0].interval.startTime;
+    const opStop = skipIntervals.results[0].interval.endTime;
+    const edStart = skipIntervals.results[1].interval.startTime;
+    const edStop = skipIntervals.results[1].interval.endTime;
 
     try {
         document.getElementById("ep-name").innerHTML = name;
         const serversbtn = document.getElementById("serversbtn");
 
-         let  url = stream["sources"][0]["file"];
-        serversbtn.innerHTML += `<div class="sitem"> <a class="sobtn sactive" onclick="selectServer(this)" data-value="./embed.html?url=${url}&id=${episodeid}">Player 1</a> </div>`;
+        let url = stream["sources"][0]["file"];
+        serversbtn.innerHTML += `<div class="sitem"> <a class="sobtn sactive" onclick="selectServer(this)" data-value="./embed.html?url=${url}&id=${episodeid}&opstart=${opStart}&opstop=${opStop}&edstart=${edStart}&edstop=${edStop}">Player 1</a> </div>`;
         document.getElementsByClassName("sactive")[0].click();
 
         url = stream["sources_bk"][0]["file"];
-        serversbtn.innerHTML += `<div class="sitem"> <a class="sobtn" onclick="selectServer(this)" data-value="./embed.html?url=${url}&id=${episodeid}">Player 2</a> </div>`;
-       
-         url = stream["sources"][0]["file"];
-        serversbtn.innerHTML += `<div class="sitem"> <a class="sobtn sactive" onclick="selectServer(this)" data-value="./artplayer.html?url=${url}&id=${episodeid}">Art Player</a> </div>`;
+        serversbtn.innerHTML += `<div class="sitem"> <a class="sobtn" onclick="selectServer(this)" data-value="./embed.html?url=${url}&id=${episodeid}&opstart=${opStart}&opstop=${opStop}&edstart=${edStart}&edstop=${edStop}">Player 2</a> </div>`;
+
+        url = stream["sources"][0]["file"];
+        serversbtn.innerHTML += `<div class="sitem"> <a class="sobtn sactive" onclick="selectServer(this)" data-value="./artplayer.html?url=${url}&id=${episodeid}&opstart=${opStart}&opstop=${opStop}&edstart=${edStart}&edstop=${edStop}">Art Player</a> </div>`;
         document.getElementsByClassName("sactive")[0].click();
 
         return true;
@@ -80,6 +111,7 @@ async function loadVideo(name, stream) {
         return false;
     }
 }
+
 
 // Function to available servers
 async function loadServers(servers, success = true) {
@@ -309,7 +341,6 @@ function retryImageLoad(img) {
 
 }
 
-
 // Function to scroll episode slider
 function plusSlides(n) {
     if (n === 1) {
@@ -335,8 +366,6 @@ async function RefreshLazyLoader() {
     });
 }
 
-
-
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
@@ -360,7 +389,9 @@ async function loadEpisodeData(data) {
         if (stream == null) {
             throw "Failed To Load Ad Free Servers";
         }
-        loadVideo(name, stream).then(() => {
+        // Fetch skip intervals from AniSkip API
+        const skipIntervals = await getJson(`${AniSkip}${urlParams.get("anime")}-episode-${urlParams.get("episode")}`);
+        loadVideo(name, stream, skipIntervals).then(() => {
             console.log("Video loaded");
             loadServers(servers, true).then(() => {
                 console.log("Servers loaded");
