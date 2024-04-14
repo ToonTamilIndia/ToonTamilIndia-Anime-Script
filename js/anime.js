@@ -168,7 +168,7 @@ async function getEpSlider(total) {
         let episodeId = total[i][1]
         let epNum = total[i][0]
         let x = episodeId.split("-episode-");
-        ephtml += `<div class=ep-slide><a href="./episode.html?anime=${x[0]}&episode=${x[1]}"><img onerror="retryImageLoad(this)" class="lzy_img" src="./logo/loading1.gif" data-src=http://toontamilindia.pythonanywhere.com/anime/${episodeId}><div class=ep-title><span>Episode ${epNum}</span></div></a></div>`;
+        ephtml += `<div class=ep-slide><a href="./episode.html?anime=${x[0]}&episode=${x[1]}"><img onerror="retryImageLoad(this)" class="lzy_img" src="./logo/loading1.gif" data-src=http://toontamilindia.pythonanywhere.com/image/${episodeId}><div class=ep-title><span>Episode ${epNum}</span></div></a></div>`;
     }
     document.getElementById("ep-slider").innerHTML = ephtml;
     document.getElementById("slider-main").style.display = "block";
