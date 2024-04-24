@@ -1,6 +1,6 @@
 # Update
 *****The Animedex Shutdown*****
-- This was a copy if animedex and its services are completely shutdown due to precaution of copyright problem
+- This was a copy of animedex and its services are completely shutdown due to precaution of copyright problem
 
 - So Major updated will not come the update will come  once or twice a month (I Think)
 
