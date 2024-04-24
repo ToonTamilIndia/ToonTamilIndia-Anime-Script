@@ -2,9 +2,10 @@
 *****The Animedex Shutdown*****
 - This was a copy if animedex and its services are completely shutdown due to precaution of copyright problem
 
-- So Major updated will not come once or twice a month (I Think)
+- So Major updated will not come the update will come  once or twice a month (I Think)
 
-- We use anime dex thumbnail api that will not working It can be fixed the api is available on github I will deploy afterwards and fix this issue
+- ~~We use anime dex thumbnail api it is not working It can be fixed. the api is available on github I will deploy afterwards and fix this issue~~
+- The thumbnail is not using animedex thumbnail api and the image issue was partially fixed (not completely) Known issue: 2,3... season differ and dub is not working fix as soon as possible 
 
 ![Watch High Quality Anime Online](https://anitoon.pages.dev/logo/logo_TTI.jpg)
 ## ToonTamilIndia-Anime-Script
