@@ -1047,27 +1047,7 @@ Icone de Share.
             });
         });
 
-        // Adding a custom download button
-        playerInstance.addButton(
-            "https://path_to_your_download_icon/icon.png", // Icon path
-            "Download Video", // Tooltip text
-            buttonClickAction, // Function to execute on click
-            "downloadButton" // Button ID
-        );
-
-        // Function executed when the download button is clicked
-        function buttonClickAction() {
-            const playlistItem = playerInstance.getPlaylistItem();
-            const anchor = document.createElement("a");
-            const fileUrl = playlistItem.file;
-            anchor.setAttribute("href", fileUrl);
-            const downloadName = playlistItem.file.split("/").pop();
-            anchor.setAttribute("download", downloadName);
-            anchor.style.display = "none";
-            document.body.appendChild(anchor);
-            anchor.click();
-            document.body.removeChild(anchor);
-        }
+      
 
         // Detect adblock
         playerInstance.on("adBlock", () => {
