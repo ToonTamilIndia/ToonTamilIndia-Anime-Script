@@ -2006,7 +2006,7 @@ Icone de Share.
 
 </div>
 
-
+<script src="https://jssdk.peervadoo.com/vadoosdk.js"></script>	
 
   <script src="https://ssl.p.jwpcdn.com/player/v/8.29.0/jwplayer.js"></script>
 
@@ -2249,9 +2249,10 @@ Icone de Share.
             button.onclick = () => {
                 playerInstance.seek(playerInstance.getPosition() + 10);
             };
-        });
-    });
-
+          vadoo.base.start_jwplayer(player, {
+			liveSyncDurationCount: 5,
+			loader: mixer.createMixer()
+		});
   
     // Add more event handlers as needed
 
